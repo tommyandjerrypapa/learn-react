@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .dllm {
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="test"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/prop-types.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+      class Person extends React.Component {
+        render() {
+          return (
+            <ul>
+              <li>Name: {this.props.name}</li>
+              <li>Gender: {this.props.gender}</li>
+              <li>Age: {this.props.age}</li>
+            </ul>
+          );
+        }
+
+        static propTypes = {
+          name: PropTypes.string.isRequired,
+          gender: PropTypes.string,
+          age: PropTypes.number,
+        };
+
+        static defaultPros = {
+          age: 0,
+        };
+      }
+
+      let data = { name: "name1", gender: "M", age: 18 };
+      ReactDOM.render(<Person {...data} />, document.getElementById("test"));
+    </script>
+  </body>
+</html>
